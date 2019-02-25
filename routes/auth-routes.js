@@ -1,7 +1,7 @@
 const express = require("express");
 const authRoutes = express.Router();
-
 const passport = require("passport");
+const flash = require("connect-flash");
 const ensureLogin = require("connect-ensure-login");
 
 // User model
@@ -11,7 +11,6 @@ const User = require("../models/user");
 const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
 
-// GET SIGNUP PAGE
 authRoutes.get("/signup", (req, res, next) => {
   res.render("auth/signup");
 });
@@ -19,6 +18,7 @@ authRoutes.get("/signup", (req, res, next) => {
 authRoutes.post("/signup", (req, res, next) => {
   const username = req.body.username;
   const password = req.body.password;
+  const zip = req.body.zip;
 
   if (username === "" || password === "") {
     res.render("auth/signup", { message: "Indicate username and password" });
@@ -37,14 +37,17 @@ authRoutes.post("/signup", (req, res, next) => {
 
     const newUser = new User({
       username,
-      password: hashPass
+      password: hashPass,
+      zip
     });
 
     newUser.save((err) => {
       if (err) {
         res.render("auth/signup", { message: "Something went wrong" });
       } else {
-        res.redirect("/");
+        passport.authenticate('local')(req, res, function () {
+          res.redirect('/private-page');
+        })
       }
     });
   })
@@ -54,11 +57,10 @@ authRoutes.post("/signup", (req, res, next) => {
 });
 
 
-// GET LOGIN PAGE
+
 authRoutes.get("/login", (req, res, next) => {
   res.render("auth/login", { "message": req.flash("error") });
 });
-
 authRoutes.post("/login", passport.authenticate("local", {
   successRedirect: "/",
   failureRedirect: "/login",
@@ -66,17 +68,25 @@ authRoutes.post("/login", passport.authenticate("local", {
   passReqToCallback: true
 }));
 
-// LOGOUT
+authRoutes.get("/private-page", isLoggedIn, (req, res) => {
+  res.render("private", { user: req.user });
+});
+
+// PROFILE PAGE
+authRoutes.get("/profile", isLoggedIn, (req, res) => {
+  res.render("profile", { user: req.user });
+});
+
 authRoutes.get("/logout", (req, res) => {
   req.logout();
   res.redirect("/login");
 });
 
 
+function isLoggedIn(req, res, next) {
+  if (req.isAuthenticated())
+      return next();
 
-// PROTECTED ROUTES
-authRoutes.get("/private-page", ensureLogin.ensureLoggedIn(), (req, res) => {
-  res.render("private", { user: req.user });
-});
-
+  res.redirect('/login');
+}
 module.exports = authRoutes;

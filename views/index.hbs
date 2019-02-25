@@ -1,2 +1,33 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<body class="home-body">
+<div class="container home-container">
+  <div class="row justify-content-center">
+    <img src="../images/circle.png">
+  </div>
+  <div class="row justify-content-center">
+    <h1>FitPal</h1>
+  </div>
+  <div class="row justify-content-center">
+        <form action="/login" method="POST">
+      <div>
+        <label for="username">Username:</label>
+        <input type="text" name="username">
+      </div>
+      <div>
+        <label for="password">Password:</label>
+        <input type="password" name="password">
+      </div>
+      {{#if message}}
+        <div class="error-message">{{ message }}</div>
+      {{/if}}
+      <div>
+        <input type="submit" value="Log In">
+      </div>
+    </form>
+  </div>
+  <div class="row justify-content-center">
+    <a href="/signup">Signup</a>
+  </div>
+
+{{!-- <a href="/login">Login</a> --}}
+</div>
+</body>

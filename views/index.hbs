@@ -1,32 +1,34 @@
 <body class="home-body">
 <div class="container home-container">
-  <div class="row justify-content-center">
+  {{!-- <div class="row justify-content-center">
     <img src="../images/circle.png">
+  </div> --}}
+  <div class="row justify-content-center">
+    <h1 class="app-name">FitPal</h1>
   </div>
   <div class="row justify-content-center">
-    <h1>FitPal</h1>
-  </div>
-  <div class="row justify-content-center">
-        <form action="/login" method="POST">
-      <div>
-        <label for="username">Username:</label>
-        <input type="text" name="username">
+        <form action="/login" method="POST" class="login-form">
+      <div class="form-group">
+        <div class="col"> <label for="username">Username:</label> </div>
+        <div class="col"> <input type="text" name="username"> </div>
       </div>
-      <div>
-        <label for="password">Password:</label>
-        <input type="password" name="password">
+      <div class="form-group">
+        <div class="col"> <label for="password">Password:</label> </div>
+        <div class="col"> <input type="password" name="password"> </div>
       </div>
       {{#if message}}
         <div class="error-message">{{ message }}</div>
       {{/if}}
-      <div>
-        <input type="submit" value="Log In">
+      <div class="row justify-content-center">
+        <button type="submit" class="btn" value="Log In">Sign In</button>
       </div>
+      <br>
+      <div class="row justify-content-center">
+    <p>Don't have an account? <a href="/signup">Signup</a> </p>
+  </div>
     </form>
   </div>
-  <div class="row justify-content-center">
-    <a href="/signup">Signup</a>
-  </div>
+  
 
 {{!-- <a href="/login">Login</a> --}}
 </div>

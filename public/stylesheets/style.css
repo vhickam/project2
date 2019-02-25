@@ -1,11 +1,24 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+  padding: 50px; }
 
 a {
   color: #00B7FF; }
 
 .home-body {
-  background-color: #ff7a1c; }
+  background-color: #ff790c; }
+
+.app-name {
+  font-size: 80px;
+  font-family: 'Knewave', cursive; }
+
+.login-form p {
+  font-size: 13px; }
+
+.login-form .btn {
+  color: white;
+  background-color: rgba(255, 255, 255, 0.5); }
+
+.login-form a {
+  color: white; }
 
 /*# sourceMappingURL=style.css.map */

@@ -1,6 +1,6 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  // font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
@@ -8,5 +8,25 @@ a {
 }
 
 .home-body{
-  background-color: #ff7a1c;
+  background-color: #ff790c;
+}
+
+.app-name{
+  font-size: 80px;
+  font-family: 'Knewave', cursive;
+}
+
+.login-form{
+  p{
+    font-size: 13px;
+  }
+
+  .btn{
+    color: white;
+    background-color: rgba(255,255,255,0.5);
+  }
+
+  a{
+    color: white;
+  }
 }

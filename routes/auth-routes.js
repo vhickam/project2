@@ -77,6 +77,8 @@ authRoutes.get("/profile", isLoggedIn, (req, res) => {
   res.render("profile", { user: req.user });
 });
 
+
+// LOGOUT
 authRoutes.get("/logout", (req, res) => {
   req.logout();
   res.redirect("/login");

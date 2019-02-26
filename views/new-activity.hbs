@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row justify-content-center">
+
+    <form action="/new-activity" method="POST" class="activity-form">
+      <div class="form-group">
+        <div class="col"> <label for="title">Title:</label> </div>
+        <div class="col"> <input type="text" name="title"> </div>
+      </div>
+      <div class="form-group">
+        <div class="col"> <label for="description">Description:</label> </div>
+        <div class="col"> <textarea rows="4" name="description"></textarea> </div>
+      </div>
+      <div class="form-group">
+        <div class="col"> <label for="date">Date:</label> </div>
+        <div class="col"> <input type="date" name="date">  </div>
+      </div>
+        {{#if message}}
+          <div class="error-message">{{ message }}</div>
+        {{/if}}
+      <div class="row justify-content-center">
+        <button type="submit" class="btn" value="Log In">Create</button>
+      </div>
+    </form>
+  </div>
+
+</div>

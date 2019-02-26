@@ -2,13 +2,15 @@ const mongoose = require("mongoose");
 const Schema   = mongoose.Schema;
 
 const activitySchema = new Schema({
-  username: String,
-  password: String,
-  zip: Number,
+  title: String,
+  description: String,
+  category: String,
+  date: Date,
+  owner: Schema.Types.ObjectId
 }, {
   timestamps: { createdAt: "created_at", updatedAt: "updated_at" }
 });
 
-const User = mongoose.model("User", userSchema);
+const Activity = mongoose.model("Activity", activitySchema);
 
-module.exports = User;
+module.exports = Activity;

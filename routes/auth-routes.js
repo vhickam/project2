@@ -78,6 +78,7 @@ authRoutes.get("/profile", isLoggedIn, (req, res) => {
 });
 
 
+
 // LOGOUT
 authRoutes.get("/logout", (req, res) => {
   req.logout();

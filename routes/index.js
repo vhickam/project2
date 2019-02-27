@@ -4,9 +4,18 @@ const router  = express.Router();
 // ACTIVITY MODEL
 const Activity = require("../models/activity");
 
-/* GET home page */
+/* GET index page */
 router.get('/', (req, res, next) => {
   res.render('index');
+});
+
+// GET HOME PAGE
+router.get("/home", isLoggedIn, (req, res) => {
+  Activity.find()
+  .then(allActivities => {
+    res.render("home", { user: req.user, activities: allActivities });
+  })
+ 
 });
 
 
@@ -15,12 +24,15 @@ router.get("/new-activity", (req, res, next) => {
   res.render("new-activity");
 });
 
+
 router.post("/new-activity", (req, res, next) => {
   const title = req.body.title;
   const description = req.body.description;
   const date = req.body.date;
+  const time = req.body.time;
   const category = req.body.category;
   const owner = req.user._id;
+
 
   const newActivity = new Activity({
     title,
@@ -38,5 +50,15 @@ router.post("/new-activity", (req, res, next) => {
     }
   });
 });
+
+
+
+
+function isLoggedIn(req, res, next) {
+  if (req.isAuthenticated())
+      return next();
+
+  res.redirect('/login');
+}
 
 module.exports = router;

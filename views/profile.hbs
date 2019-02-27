@@ -2,11 +2,12 @@
 {{#if user}}
   <div>
     <h3>{{user.username}}'s Created Activities: </h3>
-     <ul>
+    
       {{#each activities}}
-        <li>{{this.title}} : {{this.description}}</li>
+        <h4>{{this.title}}</h4>
+        <a href="/profile/{{this._id}}">Details</a>
       {{/each}}
-    </ul>
+    
   
     <br>
     <a href="/">Index</a>

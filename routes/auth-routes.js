@@ -62,15 +62,16 @@ authRoutes.post("/signup", (req, res, next) => {
 
 //LOGIN
 authRoutes.get("/login", (req, res, next) => {
-  res.render("index", { "message": req.flash("error") });
+  res.render("auth/login", { "message": req.flash("error") });
 });
 authRoutes.post("/login", passport.authenticate("local", {
-  successRedirect: "/private-page",
+  successRedirect: "/home",
   failureRedirect: "/login",
   failureFlash: true,
   passReqToCallback: true
 }));
 
+// PRIVATE PAGE
 authRoutes.get("/private-page", isLoggedIn, (req, res) => {
   res.render("private", { user: req.user });
 });
@@ -81,15 +82,42 @@ authRoutes.get("/profile", isLoggedIn, (req, res) => {
     if (err) {return next(err); }
     res.render("profile", { user: req.user, activities: myActivities });
   });
-
-    // Activity.find({owner: req.user._id})
-    // .then(myActivities => {
-    //   res.render("profile", {user: req.user, activities: myActivities});
-    //   console.log(myActivities);
-    // })
- 
+   
 });
 
+// ACTIVITY DETAILS
+authRoutes.get('/profile/:activityId', (req, res, next) => {
+  Activity.findById(req.params.activityId)
+  .then(theActivity =>{
+    res.render('activity-info', {activity: theActivity});
+  })
+  .catch(error => {
+    console.log('Error while retrieving activity details: ', error);
+  })
+});
+
+// EDIT ACTIVITY
+authRoutes.get('/edit-activity/:id', (req,res,next) => {
+  Activity.findById(req.params.id)
+  .then(theActivity => {
+    res.render('edit-activity', {activity: theActivity});
+    console.log(theActivity);
+  })
+  .catch(error => {
+    console.log('Error while retrieving activity details: ', error);
+  })
+});
+
+authRoutes.post('/edit-activity/:id', (req, res, next) => {
+  const { title, description, category, date } = req.body;
+  Activity.updateOne({_id: req.params.id}, { $set: {title, description, category, date}}, {new: true})
+  .then((activity) => {
+    res.redirect('/profile');
+  })
+  .catch((error) => {
+    console.log(error);
+  })
+});
 
 
 // LOGOUT
@@ -105,4 +133,5 @@ function isLoggedIn(req, res, next) {
 
   res.redirect('/login');
 }
+
 module.exports = authRoutes;

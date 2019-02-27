@@ -1,16 +1,29 @@
-{{!-- <form action="/login" method="POST">
-  <div>
-    <label for="username">Username:</label>
-    <input type="text" name="username">
+<body class="home-body">
+
+<div class="row justify-content-center">
+    <h1 class="app-name">FitPal</h1>
   </div>
-  <div>
-    <label for="password">Password:</label>
-    <input type="password" name="password">
+  <div class="row justify-content-center">
+        <form action="/login" method="POST" class="login-form">
+      <div class="form-group">
+        <div class="col"> <label for="username">Username:</label> </div>
+        <div class="col"> <input type="text" name="username"> </div>
+      </div>
+      <div class="form-group">
+        <div class="col"> <label for="password">Password:</label> </div>
+        <div class="col"> <input type="password" name="password"> </div>
+      </div>
+      {{#if message}}
+        <div class="error-message">{{ message }}</div>
+      {{/if}}
+      <div class="row justify-content-center">
+        <button type="submit" class="btn" value="Log In">Sign In</button>
+      </div>
+      <br>
+      <div class="row justify-content-center">
+    <p>Don't have an account? <a href="/signup">Signup</a> </p>
   </div>
-  {{#if message}}
-    <div class="error-message">{{ message }}</div>
-  {{/if}}
-  <div>
-    <input type="submit" value="Log In">
+    </form>
   </div>
-</form> --}}
+
+  </body>

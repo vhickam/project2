@@ -1,0 +1,66 @@
+  <form action="/edit-activity/{{activity._id}}" method="POST" class="activity-form">
+      <div class="form-group">
+        <div class="col"> <label for="title">Title:</label> </div>
+        <div class="col"> <input type="text" name="title" value="{{activity.title}}"> </div>
+      </div>
+      <div class="form-group">
+        <div class="col"> <label for="description">Description:</label> </div>
+        <div class="col"> <textarea rows="4" name="description"> {{activity.description}} </textarea> </div>
+      </div>
+      <div class="form-group">
+        <div class="col"> <label for="category">Category:</label> </div>
+        <div class="col"> 
+          <select name="category" id="category" value="{{activity.category}}">
+            <option value="run">Run</option>
+            <option value="weightroom">Weight Room</option>
+            <option value="walk">Walk</option>
+            <option value="sport">Sport</option>
+            <option value="yoga">Yoga</option>
+            <option value="pilates">Pilates</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col"> <label for="date">Date:</label> </div>
+        <div class="col"> <input id="thedate" type="date" name="date">  </div>
+      </div>
+        {{#if message}}
+          <div class="error-message">{{ message }}</div>
+        {{/if}}
+      <div class="row justify-content-center">
+        <button type="submit" class="btn" value="edit">Edit</button>
+      </div>
+    </form>
+
+
+    <script>
+      function setSelectedIndex(s, valsearch){
+        for (i=0; i<s.options.length; i++){
+          if (s.options[i].value == valsearch){
+            s.options[i].selected = true;
+            break;
+          }
+        }
+        return;
+      }
+      setSelectedIndex(document.getElementById("category"), "{{activity.category}}");
+
+
+      date = new Date('{{activity.date}}');
+      month = date.getMonth()+1;
+      if(month < 10){
+        month = '0' + month;
+      }
+      day = date.getDate();
+      if (day < 10){
+        day = '0' + day;
+      }
+      year = date.getFullYear();
+
+      theDate = year + '-' + month + '-' + day;
+     
+     document.getElementById('thedate').value = theDate;
+ 
+ 
+
+    </script>

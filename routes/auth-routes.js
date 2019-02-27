@@ -14,6 +14,8 @@ const Activity = require("../models/activity");
 const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
 
+
+// SIGNUP
 authRoutes.get("/signup", (req, res, next) => {
   res.render("auth/signup");
 });
@@ -21,6 +23,8 @@ authRoutes.get("/signup", (req, res, next) => {
 authRoutes.post("/signup", (req, res, next) => {
   const username = req.body.username;
   const password = req.body.password;
+  const firstname = req.body.firstname;
+  const lastname = req.body.lastname;
   const zip = req.body.zip;
 
   if (username === "" || password === "") {
@@ -41,6 +45,8 @@ authRoutes.post("/signup", (req, res, next) => {
     const newUser = new User({
       username,
       password: hashPass,
+      firstname,
+      lastname,
       zip
     });
 

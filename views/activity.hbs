@@ -3,4 +3,8 @@
 <h5>Description: {{activity.description}}</h5>
 <h5>Category: {{activity.category}}</h5>
 <h5>Date: {{activity.date}}</h5>
-<h5>Buddies:</h5>
+<h5>Buddies: {{activity.buddies}}</h5>
+
+<form action="/activity/join/{{activity._id}}" method="POST">
+   <button type="submit" class="btn">Join</button>
+</form>

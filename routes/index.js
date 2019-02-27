@@ -17,6 +17,27 @@ router.get("/home", isLoggedIn, (req, res) => {
   })
  
 });
+// GET ACTIVITY INFO (FROM HOME PAGE)
+router.get('/home/:actId', isLoggedIn, (req, res, next) => {
+  Activity.findById(req.params.actId)
+  .then(theActivity =>{
+    res.render('activity', {activity: theActivity});
+  })
+  .catch(error => {
+    console.log('Error while retrieving activity details: ', error);
+  })
+});
+
+// JOIN ACTIVITY
+router.post('/activity/join/:id', isLoggedIn, (req, res, next) => {
+    Activity.update({_id: req.params.id}, {$push: {buddies: req.user._id}})
+    .then(mod => {
+      res.redirect('back');
+    })
+    
+})
+
+
 
 
 // GET new activity page

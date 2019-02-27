@@ -6,6 +6,7 @@ const activitySchema = new Schema({
   description: String,
   category: String,
   date: Date,
+  buddies: Array,
   owner: Schema.Types.ObjectId
 }, {
   timestamps: { createdAt: "created_at", updatedAt: "updated_at" }

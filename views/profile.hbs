@@ -1,7 +1,13 @@
 <h1>Profile Page</h1>
 {{#if user}}
   <div>
-    {{user.username}}'s Profile
+    <h3>{{user.username}}'s Created Activities: </h3>
+     <ul>
+      {{#each activities}}
+        <li>{{this.title}} : {{this.description}}</li>
+      {{/each}}
+    </ul>
+  
     <br>
     <a href="/">Index</a>
     <br>

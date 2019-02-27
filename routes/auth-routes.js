@@ -7,6 +7,9 @@ const ensureLogin = require("connect-ensure-login");
 // User model
 const User = require("../models/user");
 
+// Activity model
+const Activity = require("../models/activity");
+
 // Bcrypt to encrypt passwords
 const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
@@ -74,7 +77,17 @@ authRoutes.get("/private-page", isLoggedIn, (req, res) => {
 
 // PROFILE PAGE
 authRoutes.get("/profile", isLoggedIn, (req, res) => {
-  res.render("profile", { user: req.user });
+  Activity.find({owner: req.user._id}, (err, myActivities) => {
+    if (err) {return next(err); }
+    res.render("profile", { user: req.user, activities: myActivities });
+  });
+
+    // Activity.find({owner: req.user._id})
+    // .then(myActivities => {
+    //   res.render("profile", {user: req.user, activities: myActivities});
+    //   console.log(myActivities);
+    // })
+ 
 });
 
 

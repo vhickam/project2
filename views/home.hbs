@@ -21,13 +21,75 @@
   </div>
 </nav>
 
-<h1>Home Page</h1>
-
+<div class="row">
+  <select id="filterCat" onchange="filterCat()">
+    <option disabled selected>Category</option>
+    <option value='cycling'>Cycling</option>
+    <option value='run'>Running</option>
+    <option value='swimming'>Swimming</option>
+    <option value='weightlifting'>Weightlifting</option>
+    <option value='yoga'>Yoga</option>
+    <option value='other'>Other</option>
+    <option value='all'>All</option>
+  </select>
+</div>
 
 <h4>All Activites:</h4>
 <table class="table">
 {{#each activities}}
-  {{>activityPartial this}}
+  <tr class="content {{category}}">
+  <td><img class='act-img' src="/images/{{category}}.png" width="40" height="40"></td>
+  <td>{{this.title}}</td>
+  <td>{{this.description}}</td>
+  <td>{{moment date 'LL'}}</td>
+  <td>{{moment date 'LT'}}</td>
+  
+  
+  <td><a href="home/{{this._id}}">More Info</a></td>
+  
+</tr>
 {{/each}}
 </table>
+
+
+
+
+<script>
+  /*
+function filterCat()
+	{  
+		var rex = new RegExp($('#filterCat').val());
+		if(rex =="/all/"){clearFilter()}else{
+			$('.content').hide();
+			$('.content').filter(function() {
+			return rex.test($(this).text());
+			}).show();
+	}
+	}
+	
+function clearFilter()
+	{
+		$('.filterCat').val('');
+		$('.content').show();
+	}
+  */
+
+  function filterCat() {
+    var filtcat = document.getElementById('filterCat').value
+    const tablerows = document.querySelectorAll('tr');
+    if(filtcat == 'all'){
+      $("tr").show();
+    }
+    else{
+    for (var i=0; i < tablerows.length; i++){
+      if (tablerows[i].classList.contains(filtcat)){
+        $(tablerows[i]).show();
+      }
+      else {
+        $(tablerows[i]).hide();
+      }
+    }
+    }
+  }
+</script>
 

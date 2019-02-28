@@ -14,23 +14,20 @@
         <div class="col"> <label for="category">Category:</label> </div>
         <div class="col"> 
           <select name="category">
-            <option value="run">Run</option>
-            <option value="weightroom">Weight Room</option>
-            <option value="walk">Walk</option>
-            <option value="sport">Sport</option>
-            <option value="yoga">Yoga</option>
-            <option value="pilates">Pilates</option>
+            <option value='cycling'>Cycling</option>
+            <option value='run'>Running</option>
+            <option value='swimming'>Swimming</option>
+            <option value='weightlifting'>Weightlifting</option>
+            <option value='yoga'>Yoga</option>
+            <option value='other'>Other</option>
           </select>
         </div>
       </div>
       <div class="form-group">
         <div class="col"> <label for="date">Date:</label> </div>
-        <div class="col"> <input id="today" type="date" name="date">  </div>
+        <div class="col"> <input id="date" type="datetime-local" name="date">  </div>
       </div>
-       <div class="form-group">
-        <div class="col"> <label for="time">Time:</label> </div>
-        <div class="col"> <input type="time" name="time">  </div>
-      </div>
+       
         {{#if message}}
           <div class="error-message">{{ message }}</div>
         {{/if}}

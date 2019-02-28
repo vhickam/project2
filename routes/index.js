@@ -6,13 +6,14 @@ const Activity = require("../models/activity");
 
 /* GET index page */
 router.get('/', (req, res, next) => {
-  res.render('index');
+  res.redirect('home');
 });
 
 // GET HOME PAGE
 router.get("/home", isLoggedIn, (req, res) => {
-  Activity.find()
+  Activity.find().sort('date')
   .then(allActivities => {
+    console.log(allActivities)
     res.render("home", { user: req.user, activities: allActivities });
   })
  
@@ -40,7 +41,7 @@ router.post('/activity/join/:id', isLoggedIn, (req, res, next) => {
 
 
 
-// GET new activity page
+// NEW ACTIVITY
 router.get("/new-activity", (req, res, next) => {
   res.render("new-activity");
 });
@@ -50,7 +51,6 @@ router.post("/new-activity", (req, res, next) => {
   const title = req.body.title;
   const description = req.body.description;
   const date = req.body.date;
-  const time = req.body.time;
   const category = req.body.category;
   const owner = req.user._id;
 

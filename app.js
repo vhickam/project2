@@ -12,7 +12,19 @@ const flash = require("connect-flash");
 const User = require('./models/user')
 const ensureLogin = require("connect-ensure-login");
 
+hbs.registerHelper('json', function(context) {
+  return JSON.stringify(context);
+});
 
+var handlebars = require('handlebars');
+hbs.registerHelper('moment', require('helper-moment'))
+
+// hbs.registerHelper("formatDate", function (datetime, format) {
+//   return moment(datetime).format(format);
+// });
+
+// var moment = require('moment');
+// moment().format();
 
 
 // app.js

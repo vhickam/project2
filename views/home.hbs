@@ -1,3 +1,5 @@
+<body class="home-body">
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">
     <img src="/images/icon-color.png" width="30" height="30" class="d-inline-block align-top" alt="">
@@ -21,58 +23,58 @@
   </div>
 </nav>
 
-<div class="row">
-  <select id="filterCat" onchange="filterCat()">
-    <option disabled selected>Category</option>
-    <option value='cycling'>Cycling</option>
-    <option value='run'>Running</option>
-    <option value='swimming'>Swimming</option>
-    <option value='weightlifting'>Weightlifting</option>
-    <option value='yoga'>Yoga</option>
-    <option value='other'>Other</option>
-    <option value='all'>All</option>
-  </select>
+
+
+<div class='row justify-content-center filter-row '>
+  <div class="flex-col justify-content-center">
+    <select id="filterCat" onchange="filterCat()">
+      <option disabled selected>Category</option>
+      <option value='all'>All</option>
+      <option value='cycling'>Cycling</option>
+      <option value='run'>Running</option>
+      <option value='swimming'>Swimming</option>
+      <option value='weightlifting'>Weightlifting</option>
+      <option value='yoga'>Yoga</option>
+      <option value='other'>Other</option>
+      
+    </select>
+  </div>
+
+  <div class='flex-col justidy-content-center'>
+    <input 
+        type="text" 
+        id="date-picker"
+        placeholder="yyyy-mm-dd"
+        onchange="filterDate()">
+  </div>
 </div>
 
-<h4>All Activites:</h4>
+<div class='container table-container'>
 <table class="table">
 {{#each activities}}
   <tr class="content {{category}}">
-  <td><img class='act-img' src="/images/{{category}}.png" width="40" height="40"></td>
-  <td>{{this.title}}</td>
-  <td>{{this.description}}</td>
-  <td>{{moment date 'LL'}}</td>
-  <td>{{moment date 'LT'}}</td>
-  
-  
-  <td><a href="home/{{this._id}}">More Info</a></td>
-  
-</tr>
+    <td><img class='act-img' src="/images/{{category}}.png" width="45" height="45"></td>
+    <td><h4>{{this.title}}</h4></td>
+    <td><p>{{this.description}}</p></td>
+    <td class="datetime">{{moment date 'll'}}</td>
+    <td class="datetime">{{moment date 'LT'}}</td>
+    <td><a href="home/{{this._id}}"><img src="/images/rightarrow.svg" width="20" height="20"></a></td>
+  </tr>
 {{/each}}
 </table>
+</div>
 
 
 
+</body>
 
 <script>
-  /*
-function filterCat()
-	{  
-		var rex = new RegExp($('#filterCat').val());
-		if(rex =="/all/"){clearFilter()}else{
-			$('.content').hide();
-			$('.content').filter(function() {
-			return rex.test($(this).text());
-			}).show();
-	}
-	}
-	
-function clearFilter()
-	{
-		$('.filterCat').val('');
-		$('.content').show();
-	}
-  */
+  $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+  
+
+  
 
   function filterCat() {
     var filtcat = document.getElementById('filterCat').value
@@ -90,6 +92,11 @@ function clearFilter()
       }
     }
     }
+  }
+
+  function filterDate() {
+    var filtdate = document.getElementById('filter-date').value
+    console.log(filtdate);
   }
 </script>
 

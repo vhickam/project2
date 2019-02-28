@@ -1,16 +1,33 @@
-body {
-  padding: 50px;
-  // font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
+
 
 a {
   color: #00B7FF;
 }
 
-.home-body{
-  background-color: #ff790c;
+nav{
+  margin-bottom: 20px;
 }
 
+.home-body{
+  background-color: #f99d2c;
+}
+
+.filter-row{
+  width: 70%;
+  background-color: #50D3E2;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 5px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
+
+.table-container{
+  background-color: white;
+  border-radius: 5px;
+  border: 3px solid #EE6351;
+  box-shadow: 0px 0px 10px 2px #EE6351;
+}
 .app-name{
   font-size: 80px;
   font-family: 'Knewave', cursive;
@@ -28,5 +45,18 @@ a {
 
   a{
     color: white;
+  }
+}
+
+
+.table{
+  h4{
+    font-size: 16px;
+  }
+  p {
+    font-size: 12px;
+  }
+  .datetime{
+    font-size: 14px;
   }
 }

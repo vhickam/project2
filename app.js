@@ -25,7 +25,6 @@ const LocalStrategy = require("passport-local").Strategy;
 mongoose.Promise = Promise;
 mongoose
   .connect(`mongodb+srv://fitpal:${process.env.DBPASS}@fitpal-ebrlo.mongodb.net/fitpal?retryWrites=true`)
-  )
   .then(() => {
     console.log('Connected to Mongo!')
   }).catch(err => {

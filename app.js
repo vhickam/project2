@@ -13,6 +13,7 @@ const User = require('./models/user')
 const ensureLogin = require("connect-ensure-login");
 
 
+
 // app.js
 const session = require("express-session");
 const bcrypt = require("bcrypt");
@@ -22,7 +23,7 @@ const LocalStrategy = require("passport-local").Strategy;
 // Mongoose configuration
 mongoose.Promise = Promise;
 mongoose
-  .connect('mongodb://localhost/project2')
+  .connect(process.env.DATABASE)
   .then(() => {
     console.log('Connected to Mongo!')
   }).catch(err => {

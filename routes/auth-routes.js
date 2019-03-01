@@ -84,7 +84,7 @@ authRoutes.get("/private-page", isLoggedIn, (req, res) => {
 // authRoutes.get("/profile", isLoggedIn, (req, res) => {
 //   Activity.find({owner: req.user._id}) 
 //     .then((err, myActivities) => {
-//       Activity.find({buddies: req.user})
+//       Activity.find({buddies: req.user.name})
 //       .then((err, joinedActivities) => {
 //         console.log("THESE ARE MY JOINED ACTIVITIES:");
 //         console.log(joinedActivities);

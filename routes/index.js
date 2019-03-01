@@ -3,6 +3,7 @@ const router  = express.Router();
 
 // ACTIVITY MODEL
 const Activity = require("../models/activity");
+const User = require("../models/user");
 
 /* GET index page */
 router.get('/', (req, res, next) => {
@@ -21,8 +22,13 @@ router.get("/home", isLoggedIn, (req, res) => {
 // GET ACTIVITY INFO (FROM HOME PAGE)
 router.get('/home/:actId', isLoggedIn, (req, res, next) => {
   Activity.findById(req.params.actId)
+  
   .then(theActivity =>{
-    res.render('activity', {activity: theActivity});
+    User.findById(theActivity.owner)
+      .then(theOwner => {
+        res.render('activity', {activity: theActivity, owner: theOwner});
+      })
+    
   })
   .catch(error => {
     console.log('Error while retrieving activity details: ', error);
@@ -31,7 +37,7 @@ router.get('/home/:actId', isLoggedIn, (req, res, next) => {
 
 // JOIN ACTIVITY
 router.post('/activity/join/:id', isLoggedIn, (req, res, next) => {
-    Activity.update({_id: req.params.id}, {$push: {buddies: req.user}})
+    Activity.update({_id: req.params.id}, {$push: {buddies: req.user.name}})
     .then(mod => {
       res.redirect('back');
     })

@@ -1,6 +1,6 @@
-<body class="home-body">
+<body class="login-body">
 
-<div class="row justify-content-center">
+{{!-- <div class="row justify-content-center">
     <h1 class="app-name">FitPal</h1>
   </div>
   <div class="row justify-content-center">
@@ -24,6 +24,33 @@
     <p>Don't have an account? <a href="/signup">Signup</a> </p>
   </div>
     </form>
+  </div> --}}
+
+  <div class="container login-form-container">
+   <form action="/login" method="POST" class="login-form form-signin">
+    <div class="text-centered">
+    <img class="mb-4" src="/images/icon-color.svg" width="150" height="150">
+    </div>
+    <h1 class="h3 mb-3 font-weight-normal">Sign In</h1>
+      
+        <label for="username" class="sr-only">Email Address</label>
+        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" name="username" required autofocus> 
+     
+        <label for="password" class="sr-only">Password</label> 
+        <input type="password" id="inputPassword" class='form-control' placeholder='password' name="password" required> 
+      
+      {{#if message}}
+        <div class="error-message">{{ message }}</div>
+      {{/if}}
+      
+        <button type="submit" class="btn btn-lg btn-primary btn-block" value="Log In">Sign In</button>
+      
+     
+
+    <p><a href="/signup">Don't have an account? Signup</a> </p>
+ 
+    </form>
   </div>
 
+  
   </body>

@@ -1,10 +1,53 @@
-<h2>Activity Details:</h2>
-<h5>Title: {{activity.title}}</h5>
-<h5>Description: {{activity.description}}</h5>
-<h5>Category: {{activity.category}}</h5>
-<h5>Date: {{activity.date}}</h5>
-<h5>Buddies: {{activity.buddies}}</h5>
+<body class="activity-info-body">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">
+    <img src="/images/icon-color.png" width="30" height="30" class="d-inline-block align-top" alt="">
+    FitPal
+  </a>
+   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+   <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/profile">Profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/logout">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
 
-<form action="/activity/join/{{activity._id}}" method="POST">
-   <button type="submit" class="btn">Join</button>
-</form>
+
+
+<div class='container activity-info-container'>
+   {{!-- <a href="/home" class='back-link'>back</a> --}}
+   <div class="card text-center" style="width: 25rem;">
+   
+   <img class='card-img-top' src='/images/{{activity.category}}.png' width="100" height="100">
+   <div class="card-body">
+      <h3 class='card-title'>{{activity.title}}</h3>
+      <h7>{{moment activity.date 'll'}}</h7>
+      <h7>{{moment activity.date 'LT'}}</h7>
+      <br> <br>
+      <p class='card-text'>{{activity.description}}</p>
+      <h9>Buddies:</h9> <br>
+      <h7> {{activity.buddies}}</h7>
+      <br>
+      <h9>Meet Address:</h9> <br>
+      <h7> {{activity.address}}</h7>
+      <br>
+      <h9>Hosted By:</h9> <br>
+      <h7>{{activity.owner.name}}</h7>
+   </div>
+   <form action="/activity/join/{{activity._id}}" method="POST">
+      <button type="submit" class="btn btn-lg btn-primary btn-block">Join</button>
+   </form>
+   </div>
+</div>
+
+</body>

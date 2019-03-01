@@ -17,7 +17,7 @@
         <a class="nav-link" href="/profile">Profile</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Logout</a>
+        <a class="nav-link" href="/logout">Logout</a>
       </li>
     </ul>
   </div>
@@ -25,7 +25,12 @@
 
 
 
-<div class='row justify-content-center filter-row '>
+
+
+<div class='container table-container'>
+<table class="table">
+  <tr>
+    <div class='row justify-content-center filter-row '>
   <div class="flex-col justify-content-center">
     <select id="filterCat" onchange="filterCat()">
       <option disabled selected>Category</option>
@@ -40,29 +45,25 @@
     </select>
   </div>
 
-  <div class='flex-col justidy-content-center'>
-    <input 
-        type="text" 
-        id="date-picker"
-        placeholder="yyyy-mm-dd"
-        onchange="filterDate()">
-  </div>
 </div>
+  
+  </tr>
 
-<div class='container table-container'>
-<table class="table">
 {{#each activities}}
+<div class="activ-cont">
   <tr class="content {{category}}">
     <td><img class='act-img' src="/images/{{category}}.png" width="45" height="45"></td>
     <td><h4>{{this.title}}</h4></td>
     <td><p>{{this.description}}</p></td>
-    <td class="datetime">{{moment date 'll'}}</td>
-    <td class="datetime">{{moment date 'LT'}}</td>
+    <td class="datetime">{{moment this.date 'll'}}</td>
+    <td class="datetime rowtime">{{moment this.date 'LT'}}</td>
     <td><a href="home/{{this._id}}"><img src="/images/rightarrow.svg" width="20" height="20"></a></td>
   </tr>
+  </div>
 {{/each}}
+
 </table>
-</div>
+
 
 
 
@@ -100,3 +101,11 @@
   }
 </script>
 
+
+  {{!-- <div class='flex-col justidy-content-center'>
+    <input 
+        type="text" 
+        id="date-picker"
+        placeholder="yyyy-mm-dd"
+        onchange="filterDate()">
+  </div> --}}

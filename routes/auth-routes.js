@@ -23,8 +23,7 @@ authRoutes.get("/signup", (req, res, next) => {
 authRoutes.post("/signup", (req, res, next) => {
   const username = req.body.username;
   const password = req.body.password;
-  const firstname = req.body.firstname;
-  const lastname = req.body.lastname;
+  const name = req.body.name
   const zip = req.body.zip;
 
   if (username === "" || password === "") {
@@ -45,8 +44,7 @@ authRoutes.post("/signup", (req, res, next) => {
     const newUser = new User({
       username,
       password: hashPass,
-      firstname,
-      lastname,
+      name,
       zip
     });
 

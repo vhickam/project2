@@ -31,7 +31,7 @@ router.get('/home/:actId', isLoggedIn, (req, res, next) => {
 
 // JOIN ACTIVITY
 router.post('/activity/join/:id', isLoggedIn, (req, res, next) => {
-    Activity.update({_id: req.params.id}, {$push: {buddies: req.user._id}})
+    Activity.update({_id: req.params.id}, {$push: {buddies: req.user.name}})
     .then(mod => {
       res.redirect('back');
     })

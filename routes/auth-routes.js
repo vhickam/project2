@@ -53,7 +53,7 @@ authRoutes.post("/signup", (req, res, next) => {
         res.render("auth/signup", { message: "Something went wrong" });
       } else {
         passport.authenticate('local')(req, res, function () {
-          res.redirect('/private-page');
+          res.redirect('/home');
         })
       }
     });
@@ -81,6 +81,18 @@ authRoutes.get("/private-page", isLoggedIn, (req, res) => {
 });
 
 // PROFILE PAGE
+// authRoutes.get("/profile", isLoggedIn, (req, res) => {
+//   Activity.find({owner: req.user._id}) 
+//     .then((err, myActivities) => {
+//       Activity.find({buddies: req.user})
+//       .then((err, joinedActivities) => {
+//         console.log("THESE ARE MY JOINED ACTIVITIES:");
+//         console.log(joinedActivities);
+//         res.render("profile", { user: req.user, activities: myActivities, joinedActivities});      
+//       })
+//   });
+   
+// });
 authRoutes.get("/profile", isLoggedIn, (req, res) => {
   Activity.find({owner: req.user._id}, (err, myActivities) => {
     if (err) {return next(err); }
@@ -88,6 +100,8 @@ authRoutes.get("/profile", isLoggedIn, (req, res) => {
   });
    
 });
+
+
 
 // ACTIVITY DETAILS
 authRoutes.get('/profile/:activityId', (req, res, next) => {

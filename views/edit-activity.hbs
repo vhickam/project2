@@ -1,4 +1,37 @@
-  <form action="/edit-activity/{{activity._id}}" method="POST" class="activity-form">
+  <body class='new-activity-body'>
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">
+    <img src="/images/icon-color.png" width="30" height="30" class="d-inline-block align-top" alt="">
+    FitPal
+  </a>
+   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+   <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/profile">Profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/logout">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+
+
+  <div class="container">
+      <form action="/edit-activity/{{activity._id}}" method="POST" class="activity-form form-signin">
+      <div class="row justify-content-center new-activity-title">
+        <h2>Edit Activity</h2>
+      </div>
       <div class="form-group">
         <div class="col"> <label for="title">Title:</label> </div>
         <div class="col"> <input type="text" name="title" value="{{activity.title}}"> </div>
@@ -7,16 +40,22 @@
         <div class="col"> <label for="description">Description:</label> </div>
         <div class="col"> <textarea rows="4" name="description"> {{activity.description}} </textarea> </div>
       </div>
+
+        <div class="form-group">
+        <div class="col"> <label for="address">Meet Address:</label> </div>
+        <div class="col"> <input type="text" name="address" value="{{activity.address}}"> </div>
+      </div>
+
       <div class="form-group">
         <div class="col"> <label for="category">Category:</label> </div>
         <div class="col"> 
           <select name="category" id="category" value="{{activity.category}}">
-            <option value="run">Run</option>
-            <option value="weightroom">Weight Room</option>
-            <option value="walk">Walk</option>
-            <option value="sport">Sport</option>
-            <option value="yoga">Yoga</option>
-            <option value="pilates">Pilates</option>
+             <option value='cycling'>Cycling</option>
+            <option value='run'>Running</option>
+            <option value='swimming'>Swimming</option>
+            <option value='weightlifting'>Weightlifting</option>
+            <option value='yoga'>Yoga</option>
+            <option value='other'>Other</option>
           </select>
         </div>
       </div>
@@ -28,10 +67,12 @@
           <div class="error-message">{{ message }}</div>
         {{/if}}
       <div class="row justify-content-center">
-        <button type="submit" class="btn" value="edit">Edit</button>
+        <button type="submit" class="btn btn-lg btn-primary btn-block" value="edit">Edit</button>
       </div>
     </form>
-
+    <a href="/profile/{{activity._id}}"><img src='/images/leftarrow.png' class='backarrow'></a>
+</div>
+</body>
 
     <script>
       function setSelectedIndex(s, valsearch){

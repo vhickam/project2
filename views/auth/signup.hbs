@@ -1,13 +1,15 @@
 
-<div class="container">
-<form action="/signup" method="POST" id="form-container" class='form-signin'>
+<body class="login-body">
+
+<div class="container login-form-container">
+<form action="/signup" method="POST" id="form-container" class='form-signin login-form'>
 
    <div class="text-centered">
     <img class="mb-4" src="/images/icon-color.svg" width="150" height="150">
     </div>
     <h1 class="h3 mb-3 font-weight-normal">Sign Up</h1>
 
-  <label for="username">Email</label>
+  {{!-- <label for="username">Email</label>
   <input id="username" type="text" name="username" placeholder="john@example.com">
   <br><br>
   <label for="password">Password</label>
@@ -16,19 +18,29 @@
    <label for="name">Name</label>
   <input id="name" type="text" name="name" placeholder='John Doe'>
   <br> <br>
-  <label for="zip">City (ZIP)</label>
-  <input id="zip" type="text" name="zip" placeholder="12345">
+
 
   {{#if message}}
     <div class="error-message">{{ message }}</div>
   {{/if}}
-  <br><br>
+  <br><br> --}}
+<label for="username" class="sr-only">Email Address</label>
+        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" name="username" required autofocus> 
+     
+        <label for="password" class="sr-only">Password</label> 
+        <input type="password" id="inputPassword" class='form-control' placeholder='password' name="password" required> 
 
-  <button>Create account</button>
+        <label for="name" class="sr-only">Name</label> 
+        <input type="name" id="inputName" class='form-control' placeholder='Name (John Doe)' name="name" required> 
+      
+      {{#if message}}
+        <div class="error-message">{{ message }}</div>
+      {{/if}}
+      
+        <button type="submit" class="btn btn-lg btn-primary btn-block" value="Sign Up">Sign Up</button>
 
-  <p class="account-message">
-    Do you already have an account?
-    <a href="/login">Login</a>
-  </p>
+        <p><a href="/login">Already have an account? Login</a> </p>
+  
 </form>
 </div>
+</body>

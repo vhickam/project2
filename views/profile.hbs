@@ -34,16 +34,16 @@
       <h3>{{user.username}}</h3>
     </div>
     <div class='row justify-content-around'>
-      <div class='col-5 created-activities'>
-        <h4>Created Activites:</h4>
-        <table class="table">
+      <div class='col-md-5 created-activities'>
+         <div class='row justify-content-center'><h4 class="table-title">Created Activites:</h4></div>
+        <table class="table profile-table">
             {{#each activities}}
           <tr class='content'>
             <td><img class='act-img' src="/images/{{category}}.png" width="20" height="20"></td>
             <td><h4>{{this.title}}</h4></td>
             <td class="datetime">{{moment this.date 'll'}}</td>
             <td class="datetime rowtime">{{moment this.date 'LT'}}</td>
-            <td><a href="/profile/{{this._id}}"><img src="/images/rightarrow.svg" width="10" height="10"></a></td>
+            <td><a href="/profile/{{this._id}}"><img src="/images/rightarrow.svg" width="15" height="15"></a></td>
           </tr>
       {{/each}}
         </table>  
@@ -52,16 +52,16 @@
         </div> 
       </div>
 
-      <div class='col-5 joined-activities'>
-        <h4>Joined Activites:</h4>
-        <table class="table">
+      <div class='col-md-5 joined-activities'>
+        <div class='row justify-content-center'><h4 class="table-title">Joined Activites:</h4></div>
+        <table class="table profile-table">
             {{#each activities}}
           <tr class='content'>
             <td><img class='act-img' src="/images/{{category}}.png" width="20" height="20"></td>
             <td><h4>{{this.title}}</h4></td>
             <td class="datetime">{{moment this.date 'll'}}</td>
             <td class="datetime rowtime">{{moment this.date 'LT'}}</td>
-            <td><a href="/profile/{{this._id}}"><img src="/images/rightarrow.svg" width="10" height="10"></a></td>
+            <td><a href="/profile/{{this._id}}"><img src="/images/rightarrow.svg" width="15" height="15"></a></td>
           </tr>
       {{/each}}
         </table>   

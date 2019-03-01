@@ -6,6 +6,7 @@ const activitySchema = new Schema({
   description: String,
   category: String,
   date: Date,
+  address: String,
   buddies: Array,
   owner: Schema.Types.ObjectId
 }, {

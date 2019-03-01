@@ -1,3 +1,5 @@
+<body class="prof-act-info">
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">
     <img src="/images/icon-color.png" width="30" height="30" class="d-inline-block align-top" alt="">
@@ -23,12 +25,35 @@
     
 
 
-<h2>Activity Details:</h2>
-<h5>Title: {{activity.title}}</h5>
-<h5>Description: {{activity.description}}</h5>
-<h5>Category: {{activity.category}}</h5>
-<h5>Date: {{activity.date}}</h5>
-<h5>Time: {{activity.time}}</h5>
-<h5>Buddies:</h5>
-<a href="/edit-activity/{{activity._id}}">EDIT</a>
+<div class='container activity-info-container'>
+   {{!-- <a href="/home" class='back-link'>back</a> --}}
+   <div class="card text-center" style="width: 25rem;">
+   
+   <img class='card-img-top' src='/images/{{activity.category}}.png' width="100" height="100">
+   <div class="card-body">
+      <h3 class='card-title'>{{activity.title}}</h3>
+      <h7>{{moment activity.date 'll'}}</h7>
+      <h7>{{moment activity.date 'LT'}}</h7>
+      <br> <br>
+      <p class='card-text'>{{activity.description}}</p>
+      <h9>Buddies:</h9> <br>
+      <h7> {{activity.buddies}}</h7>
+      <br>
+      <h9>Meet Address:</h9> <br>
+      <h7> {{activity.address}}</h7>
+      <br>
+      <div class="row">
+     <div class="col">
+       <a href="/edit-activity/{{activity._id}}">Edit</a>
+     </div>
+     <div class="col">
+       <a href="/edit-activity/{{activity._id}}">Delete</a>
+     </div>
+   </div>
+   </div>
+   </div>
+    <a href="/profile"><img src='/images/leftarrow.png' class='backarrow'></a>
+</div>
+
+</body>
 

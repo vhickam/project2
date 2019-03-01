@@ -8,19 +8,46 @@ nav{
   margin-bottom: 20px;
 }
 
+.backarrow{
+  margin-top: -60px;
+}
+
+.new-activity-body{
+  background-color: #EE6351;
+}
+.new-activity-title{
+ 
+  color: #50D3E2;
+}
 .profile-body{
   background-color: #50D3E2;
+}
+
+.prof-act-info{
+  background-color: #EE6351;
 }
 
 .created-activities{
   background-color: #EE6351;
   border-radius: 25px;
+  padding: 20px;
+}
+
+.table-title{
+  color: white;
 }
 
 .joined-activities{
   background-color: #f99d2c;
   border-radius: 25px;
+  padding: 20px;
 }
+
+.profile-table{
+  background-color: white;
+  border-radius: 25px;
+}
+
 
 
 .home-body{

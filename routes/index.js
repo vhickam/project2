@@ -52,6 +52,7 @@ router.post("/new-activity", (req, res, next) => {
   const description = req.body.description;
   const date = req.body.date;
   const category = req.body.category;
+  const address = req.body.address;
   const owner = req.user._id;
 
 
@@ -59,6 +60,7 @@ router.post("/new-activity", (req, res, next) => {
     title,
     description,
     category,
+    address,
     date,
     owner
   });

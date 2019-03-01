@@ -93,13 +93,25 @@ authRoutes.get("/private-page", isLoggedIn, (req, res) => {
 //   });
    
 // });
-authRoutes.get("/profile", isLoggedIn, (req, res) => {
-  Activity.find({owner: req.user._id}, (err, myActivities) => {
-    if (err) {return next(err); }
-    res.render("profile", { user: req.user, activities: myActivities });
-  });
+
+// authRoutes.get("/profile", isLoggedIn, (req, res) => {
+//   Activity.find({owner: req.user._id}, (err, myActivities) => {
+//     if (err) {return next(err); }
+//     res.render("profile", { user: req.user, activities: myActivities });
+//   });
    
-});
+// });
+
+authRoutes.get("/profile", isLoggedIn, (req, res) => {
+  Activity.find({owner: req.user._id})
+  .then(myActivities => {
+    Activity.find({buddies: req.user.name})
+      .then(joinedActivities => {
+        res.render("profile", { user: req.user, activities: myActivities, joined: joinedActivities });
+        console.log(joinedActivities);
+      })
+    })
+  });
 
 
 

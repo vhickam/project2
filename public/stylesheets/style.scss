@@ -194,6 +194,11 @@ nav{
   padding-bottom: 40px;
   background-color: #f99d2c;
   text-align: center;
+
+  input{
+    border-radius: 10px;
+ 
+  }
 }
 .form-signin {
   width: 100%;
@@ -207,6 +212,7 @@ nav{
     .btn-primary{
       background-color: #50D3E2;
       border-color: #50D3E2;
+      border-radius: 20px;
     }
 }
 .form-signin .form-control {
@@ -220,12 +226,10 @@ nav{
   z-index: 2;
 }
 .form-signin input[type="email"] {
-  margin-bottom: -1px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
+ 
+  
 }
 .form-signin input[type="password"] {
   margin-bottom: 10px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
+  
 }

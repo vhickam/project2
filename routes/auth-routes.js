@@ -116,7 +116,7 @@ authRoutes.get("/profile", isLoggedIn, (req, res) => {
 
 
 // ACTIVITY DETAILS
-authRoutes.get('/profile/:activityId', (req, res, next) => {
+authRoutes.get('/profile/:activityId', isLoggedIn, (req, res, next) => {
   Activity.findById(req.params.activityId)
   .then(theActivity =>{
     res.render('activity-info', {activity: theActivity});
@@ -149,6 +149,16 @@ authRoutes.post('/edit-activity/:id', (req, res, next) => {
   })
 });
 
+/*DELETE ACTIVITY */
+authRoutes.get('/delete-activity/:thisid', (req,res,next) => {
+  Activity.findByIdAndRemove(req.params.thisid)
+  .then(() => {
+    res.redirect('/profile')
+  })
+  .catch(error => {
+    console.log('Error while retrieving activity details: ', error);
+  })
+});
 
 // LOGOUT
 authRoutes.get("/logout", (req, res) => {

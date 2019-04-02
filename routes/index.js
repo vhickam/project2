@@ -39,8 +39,8 @@ router.get('/home/:actId', isLoggedIn, (req, res, next) => {
 router.post('/activity/join/:id', isLoggedIn, (req, res, next) => {
 
     //working on not being able to join activity if you've already joined it
-    if(Activity.find({buddies: req.user.name})){
-
+    if(Activity.find({buddies: req.user.name}) != null){
+        console.log("user is already a buddy")
     }
     
 

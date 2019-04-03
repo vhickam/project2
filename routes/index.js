@@ -41,13 +41,15 @@ router.post('/activity/join/:id', isLoggedIn, (req, res, next) => {
     //working on not being able to join activity if you've already joined it
     if(Activity.find({buddies: req.user.name}) != null){
         console.log("user is already a buddy")
+        var joined = true;
     }
     
-
+    else {
     Activity.update({_id: req.params.id}, {$push: {buddies: req.user.name}})
     .then(mod => {
       res.redirect('back');
     })
+  }
     
 })
 
